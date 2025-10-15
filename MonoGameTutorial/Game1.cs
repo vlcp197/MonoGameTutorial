@@ -9,6 +9,7 @@ namespace MonoGameTutorial
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private Texture2D _logo;
 
         public Game1() : base("Dungeon Slime", 1280, 720, false)
         {
@@ -22,7 +23,7 @@ namespace MonoGameTutorial
 
         protected override void LoadContent()
         {
-            base.LoadContent();
+            _logo = Content.Load<Texture2D>("images/logo");
         }
 
         protected override void Update(GameTime gameTime)
@@ -36,6 +37,10 @@ namespace MonoGameTutorial
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            SpriteBatch.Begin();
+            SpriteBatch.Draw(_logo, Vector2.Zero, Color.White);
+            SpriteBatch.End();
 
             base.Draw(gameTime);
         }
