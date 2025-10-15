@@ -38,8 +38,44 @@ namespace MonoGameTutorial
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            SpriteBatch.Begin();
-            SpriteBatch.Draw(_logo, Vector2.Zero, Color.White);
+            Rectangle iconSourceRect = new Rectangle(0, 0, 128, 128);
+
+            Rectangle wordmarkSourceRect = new Rectangle(150, 34, 458, 58);
+
+            SpriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack);
+
+            SpriteBatch.Draw(
+                _logo,
+                new Vector2(
+                    Window.ClientBounds.Width,
+                    Window.ClientBounds.Height) * 0.5f,
+                iconSourceRect,
+                Color.White,
+                0.0f,
+                new Vector2(
+                    iconSourceRect.Width,
+                    iconSourceRect.Height) * 0.5f,
+                1.0f,
+                SpriteEffects.None,
+                1.0f
+            );
+
+            SpriteBatch.Draw(
+                _logo,
+                new Vector2(
+                    Window.ClientBounds.Width,
+                    Window.ClientBounds.Height) * 0.5f,
+                wordmarkSourceRect,
+                Color.White,
+                0.0f,
+                new Vector2(
+                    wordmarkSourceRect.Width,
+                    wordmarkSourceRect.Height) * 0.5f,
+                1.0f,
+                SpriteEffects.None,
+                0.0f
+            );
+
             SpriteBatch.End();
 
             base.Draw(gameTime);
